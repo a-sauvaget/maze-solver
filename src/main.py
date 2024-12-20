@@ -1,6 +1,7 @@
 from window import Window
 
 def main():
+    help(Window)
     win = Window(800, 600)
     win.wait_for_close()
 
