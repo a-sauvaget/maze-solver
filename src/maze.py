@@ -16,7 +16,7 @@ class Maze():
         num_cols: int,
         cell_size_x: int,
         cell_size_y: int,
-        win: Window,
+        win=None
     ):
         '''
         The constructor of the Maze class.
@@ -42,6 +42,7 @@ class Maze():
         self._win = win
 
         self._create_cells()
+        self._break_entrance_and_exit()
     
     def _create_cells(self):
         '''
@@ -74,6 +75,18 @@ class Maze():
         self._cells[i][j].draw(x1, y1, x2, y2)
         self._animate()
 
+    def _break_entrance_and_exit(self):
+        '''
+        Remove an outer wall from the entrance and the exit.
+
+        The entrance to the maze will always be at the top of the top-left cell,
+        the exit always at the bottom of the bottom-right cell.
+        '''
+
+        self._cells[0][0].has_top_wall = False
+        self._draw_cell(0, 0)
+        self._cells[self._num_cols - 1][self._num_rows - 1].has_bottom_wall = False
+        self._draw_cell(self._num_cols - 1, self._num_rows - 1)
 
     def _animate(self):
         '''

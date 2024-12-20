@@ -7,7 +7,7 @@ class Cell():
     A class to represent a cell of the maze grid.
     '''
 
-    def __init__(self, win: Window):
+    def __init__(self, win=None):
         '''
         The constructor of the Cell class.
 
@@ -58,21 +58,41 @@ class Cell():
             p2 = Point(x2, y1)
             top_wall = Line(p1, p2)
             self._win.draw_line(top_wall)
+        else: 
+            p1 = Point(x1, y1)
+            p2 = Point(x2, y1)
+            top_wall = Line(p1, p2)
+            self._win.draw_line(top_wall, "white")
         if self.has_right_wall:
             p1 = Point(x2, y1)
             p2 = Point(x2, y2)
             right_wall = Line(p1, p2)
             self._win.draw_line(right_wall)
+        else:
+            p1 = Point(x2, y1)
+            p2 = Point(x2, y2)
+            right_wall = Line(p1, p2)
+            self._win.draw_line(right_wall, "white")
         if self.has_bottom_wall:
             p1 = Point(x1, y2)
             p2 = Point(x2, y2)
             bottom_wall = Line(p1, p2)
             self._win.draw_line(bottom_wall)
+        else:
+            p1 = Point(x1, y2)
+            p2 = Point(x2, y2)
+            bottom_wall = Line(p1, p2)
+            self._win.draw_line(bottom_wall, "white")
         if self.has_left_wall:
             p1 = Point(x1, y1)
             p2 = Point(x1, y2)
             left_wall = Line(p1, p2)
             self._win.draw_line(left_wall)
+        else:
+            p1 = Point(x1, y1)
+            p2 = Point(x1, y2)
+            left_wall = Line(p1, p2)
+            self._win.draw_line(left_wall, "white")
     
     def draw_move(self, to_cell: object, undo=False):
         '''
