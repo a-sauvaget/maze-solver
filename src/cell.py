@@ -68,3 +68,5 @@ class Cell():
             p2 = Point(x1, y2)
             left_wall = Line(p1, p2)
             self._win.draw_line(left_wall)
+
+        # TODO draw btw cells
