@@ -21,7 +21,7 @@ class Window:
         self.__canvas.pack(fill=BOTH, expand=1)
         self.__running = False
 
-    def draw_line(self, line: Line, fill_color: str):
+    def draw_line(self, line: Line, fill_color="black"):
         '''
         Draw a line on the window
 
