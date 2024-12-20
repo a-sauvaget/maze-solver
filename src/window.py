@@ -31,6 +31,9 @@ class Window:
         '''
 
         line.draw(self.__canvas, fill_color)
+    
+    def draw_move(self, to_cell, undo=False):
+        pass
 
     def redraw(self):
         '''
