@@ -1,5 +1,6 @@
 from window import Window
 from cell import Cell
+from maze import Maze
 
 def main():
     win = Window(800, 600)
@@ -26,6 +27,8 @@ def main():
     c4.draw(150, 100, 200, 150)
 
     c3.draw_move(c4, True)
+
+    maze = Maze(10,10, 10,10,10,10,win)
     win.wait_for_close()
 
 if __name__ == "__main__":
