@@ -46,6 +46,8 @@ class Cell():
             x2 (int) : Second point x coordinate
             y2 (int) : Second point y coordinate
         '''
+        if self._win is None:
+            return
         self._x1 = x1
         self._x2 = x2
         self._y1 = y1
@@ -86,8 +88,8 @@ class Cell():
         c1y1 = self._y1
         c1y2 = self._y2
 
-        c1_x_center = ( c1x1 + c1x2 ) // 2
-        c1_y_center = ( c1y1 + c1y2 ) // 2
+        c1_x_center = abs(c1x1 + c1x2) // 2
+        c1_y_center = abs(c1y1 + c1y2) // 2
 
         # Second cell
         c2x1 = to_cell._x1
@@ -95,17 +97,19 @@ class Cell():
         c2y1 = to_cell._y1
         c2y2 = to_cell._y2
 
-        c2_x_center = ( c2x1 + c2x2 ) // 2
-        c2_y_center = ( c2y1 + c2y2 ) // 2
+        c2_x_center = abs(c2x1 + c2x2) // 2
+        c2_y_center = abs(c2y1 + c2y2) // 2
 
         p1 = Point(c1_x_center, c1_y_center)
         p2 = Point(c2_x_center, c2_y_center)
 
+        fill_color = "red"
+
         if undo:
-            move_line = Line(p1, p2)
-            self._win.draw_line(move_line, "grey")
-        else:
-            move_line = Line(p1, p2)
-            self._win.draw_line(move_line, "red")
+            fill_color = "gray"
+
+        move_line = Line(p1, p2)
+        self._win.draw_line(move_line, fill_color)
+
 
         
