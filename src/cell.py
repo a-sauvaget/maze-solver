@@ -19,6 +19,7 @@ class Cell():
             has_right_wall (bool) : A potential cell wall (line)
             has_top_wall (bool) : A potential cell wall (line)
             has_bottom_wall (bool) : A potential cell wall (line)
+            visited (bool) : Track if a cell had theis walls broken
             _x1 (int) : Top-left corner value
             _x2 (int) : Bottom-right corner value
             _y1 (int) : Top-left corner value
@@ -30,6 +31,7 @@ class Cell():
         self.has_right_wall = True
         self.has_top_wall = True
         self.has_bottom_wall = True
+        self.visited = False
         self._x1 = None
         self._x2 = None
         self._y1 = None

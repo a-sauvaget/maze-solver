@@ -1,4 +1,5 @@
 import time
+import random
 
 from window import Window
 from cell import Cell
@@ -16,7 +17,8 @@ class Maze():
         num_cols: int,
         cell_size_x: int,
         cell_size_y: int,
-        win=None
+        win=None,
+        seed=None
     ):
         '''
         The constructor of the Maze class.
@@ -40,9 +42,13 @@ class Maze():
         self._cell_size_x = cell_size_x
         self._cell_size_y = cell_size_y
         self._win = win
+        self._seed = seed
+        if seed:
+            random.seed(seed)
 
         self._create_cells()
         self._break_entrance_and_exit()
+        self._break_walls_r(0, 0)
     
     def _create_cells(self):
         '''
@@ -56,15 +62,14 @@ class Maze():
         for i in range(self._num_cols):
             for j in range(self._num_rows):
                 self._draw_cell(i, j)
-        
-            
+                 
     def _draw_cell(self, i: int, j: int):
         '''
         Draw a single cell on the window.
 
         Parameters :
-            i (int) : Number of the row
-            j (int) : Number of the cell
+            i (int) : Position x of the cell in the list of cells
+            j (int) : Position y of the cell in the list of cells
         '''
         if self._win is None:
             return
@@ -87,6 +92,21 @@ class Maze():
         self._draw_cell(0, 0)
         self._cells[self._num_cols - 1][self._num_rows - 1].has_bottom_wall = False
         self._draw_cell(self._num_cols - 1, self._num_rows - 1)
+
+    def _break_walls_r(self, i: int, j: int):
+        '''
+        Break down walls of a cell.
+
+        Parameters :
+            i (int) : Position x of the cell in the list of cells
+            j (int) : Position y of the cell in the list of cells
+        '''
+        self._cells[i][j].visited = True
+
+        while True:
+            pass
+
+
 
     def _animate(self):
         '''
