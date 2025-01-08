@@ -7,7 +7,7 @@ chmod +x main.sh
 chmod +x test.sh
 ```
 
-## Lancer la génération du labyrinth + résolution
+## Lancer la génération du labyrinthe + résolution
 
 ```bash
 ./main.sh
