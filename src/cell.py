@@ -1,4 +1,4 @@
-from window import Window
+from graphics import Window
 from point import Point
 from line import Line
 
@@ -7,7 +7,7 @@ class Cell():
     A class to represent a cell of the maze grid.
     '''
 
-    def __init__(self, win=None):
+    def __init__(self, win: Window=None):
         '''
         The constructor of the Cell class.
 
@@ -19,7 +19,7 @@ class Cell():
             has_right_wall (bool) : A potential cell wall (line)
             has_top_wall (bool) : A potential cell wall (line)
             has_bottom_wall (bool) : A potential cell wall (line)
-            visited (bool) : Track if a cell had theis walls broken
+            visited (bool) : Track if a cell had there walls broken
             _x1 (int) : Top-left corner value
             _x2 (int) : Bottom-right corner value
             _y1 (int) : Top-left corner value
