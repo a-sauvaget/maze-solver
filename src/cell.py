@@ -1,4 +1,4 @@
-from window import Window
+from graphics import Window
 from point import Point
 from line import Line
 
@@ -7,7 +7,7 @@ class Cell():
     A class to represent a cell of the maze grid.
     '''
 
-    def __init__(self, win: Window):
+    def __init__(self, win: Window=None):
         '''
         The constructor of the Cell class.
 
@@ -19,6 +19,7 @@ class Cell():
             has_right_wall (bool) : A potential cell wall (line)
             has_top_wall (bool) : A potential cell wall (line)
             has_bottom_wall (bool) : A potential cell wall (line)
+            visited (bool) : Track if a cell had there walls broken
             _x1 (int) : Top-left corner value
             _x2 (int) : Bottom-right corner value
             _y1 (int) : Top-left corner value
@@ -30,6 +31,7 @@ class Cell():
         self.has_right_wall = True
         self.has_top_wall = True
         self.has_bottom_wall = True
+        self.visited = False
         self._x1 = None
         self._x2 = None
         self._y1 = None
@@ -58,21 +60,41 @@ class Cell():
             p2 = Point(x2, y1)
             top_wall = Line(p1, p2)
             self._win.draw_line(top_wall)
+        else: 
+            p1 = Point(x1, y1)
+            p2 = Point(x2, y1)
+            top_wall = Line(p1, p2)
+            self._win.draw_line(top_wall, "white")
         if self.has_right_wall:
             p1 = Point(x2, y1)
             p2 = Point(x2, y2)
             right_wall = Line(p1, p2)
             self._win.draw_line(right_wall)
+        else:
+            p1 = Point(x2, y1)
+            p2 = Point(x2, y2)
+            right_wall = Line(p1, p2)
+            self._win.draw_line(right_wall, "white")
         if self.has_bottom_wall:
             p1 = Point(x1, y2)
             p2 = Point(x2, y2)
             bottom_wall = Line(p1, p2)
             self._win.draw_line(bottom_wall)
+        else:
+            p1 = Point(x1, y2)
+            p2 = Point(x2, y2)
+            bottom_wall = Line(p1, p2)
+            self._win.draw_line(bottom_wall, "white")
         if self.has_left_wall:
             p1 = Point(x1, y1)
             p2 = Point(x1, y2)
             left_wall = Line(p1, p2)
             self._win.draw_line(left_wall)
+        else:
+            p1 = Point(x1, y1)
+            p2 = Point(x1, y2)
+            left_wall = Line(p1, p2)
+            self._win.draw_line(left_wall, "white")
     
     def draw_move(self, to_cell: object, undo=False):
         '''
